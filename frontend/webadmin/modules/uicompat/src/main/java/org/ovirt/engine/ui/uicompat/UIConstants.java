@@ -1967,6 +1967,8 @@ public interface UIConstants extends Constants {
 
     String snapshotConfigUpdateButtonLabel();
 
+    String snapshotMemoryDiscardWarning();
+
     String updateSnapshotConfigurationConfirmationTitle();
 
     String removeGlusterVolumeSnapshotScheduleConfirmationTitle();

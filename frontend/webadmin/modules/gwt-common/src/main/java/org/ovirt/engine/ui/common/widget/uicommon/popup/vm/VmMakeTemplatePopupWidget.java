@@ -192,6 +192,13 @@ public class VmMakeTemplatePopupWidget extends AbstractModelBoundPopupWidget<Uni
     public void edit(final UnitVmModel model) {
         driver.edit(model);
 
+        if (true) {
+            appendMessage("Empty message!!!"); //$NON-NLS-1$
+        }
+        for (String warning: model.getWarnings()) {
+            appendMessage(warning);
+        }
+
         model.getStorageDomain().getItemsChangedEvent().addListener((ev, sender, args) -> addDiskAllocation(model));
 
         model.getPropertyChangedEvent().addListener((ev, sender, args) -> {

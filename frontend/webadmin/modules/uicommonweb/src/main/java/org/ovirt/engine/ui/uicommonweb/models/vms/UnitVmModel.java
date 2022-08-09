@@ -122,6 +122,16 @@ public class UnitVmModel extends Model implements HasValidatedTabs, ModelWithMig
         this.valid = valid;
     }
 
+    private List<String> warnings;
+
+    public List<String> getWarnings() {
+        return warnings;
+    }
+
+    public void addWarning(String warning) {
+        warnings.add(warning);
+    }
+
     /**
      * All dialogs which want to have the previous advanced/basic mode remembered in local storage need to have
      * a key to local storage set.
@@ -1737,6 +1747,7 @@ public class UnitVmModel extends Model implements HasValidatedTabs, ModelWithMig
         setNicsWithLogicalNetworks(new VnicInstancesModel());
         setAdvancedMode(new EntityModel<>(false));
         setValid(new EntityModel<>(true));
+        warnings = new ArrayList<>();
         setAttachedToInstanceType(new EntityModel<>(true));
         setStorageDomain(new NotChangableForVmInPoolListModel<StorageDomain>());
         setName(new NotChangableForVmInPoolEntityModel<String>());

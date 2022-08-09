@@ -616,6 +616,9 @@ public class VmSnapshotListModel extends SearchableListModel<VM, Snapshot> {
             model.initialize();
             model.getVmType().setSelectedItem(vm.getVmType());
             model.getIsHighlyAvailable().setEntity(vm.getStaticData().isAutoStartup());
+            if (snapshot.containsMemory()) {
+                model.addWarning(constants.snapshotMemoryDiscardWarning());
+            }
             model.getCommands().add(
                     new UICommand("OnNewTemplate", VmSnapshotListModel.this) //$NON-NLS-1$
                             .setTitle(constants.ok())
@@ -733,6 +736,9 @@ public class VmSnapshotListModel extends SearchableListModel<VM, Snapshot> {
             unitVmModel.setHelpTag(HelpTag.clone_vm_from_snapshot);
             unitVmModel.setHashName("clone_vm_from_snapshot"); //$NON-NLS-1$
             unitVmModel.setCustomPropertiesKeysList(AsyncDataProvider.getInstance().getCustomPropertiesList());
+            if (snapshot.containsMemory()) {
+                unitVmModel.addWarning(constants.snapshotMemoryDiscardWarning());
+            }
             unitVmModel.initialize();
 
             VmBasedWidgetSwitchModeCommand switchModeCommand = new VmBasedWidgetSwitchModeCommand();

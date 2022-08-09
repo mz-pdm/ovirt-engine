@@ -1949,10 +1949,13 @@ public abstract class AbstractVmPopupWidget extends AbstractModeSwitchingPopupWi
                     // Update warning message by disks status
                     updateDisksWarningByImageStatus(vm.getDisks(), ImageStatus.ILLEGAL);
                     updateDisksWarningByImageStatus(vm.getDisks(), ImageStatus.LOCKED);
+                } else if (!getModel().getWarnings().isEmpty()) {
+                    generalWarningMessage.setText(String.join(";", getModel().getWarnings())); // $NON-NLS-1$
+                    generalWarningMessage.setVisible(true);
                 } else {
                     // Clear warning message
-                    generalWarningMessage.setText(""); //$NON-NLS-1$
-                    generalWarningMessage.setVisible(false);
+                    generalWarningMessage.setText("Clear warning message!!!"); //$NON-NLS-1$
+                    generalWarningMessage.setVisible(true);
                 }
             }
 
